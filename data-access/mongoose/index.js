@@ -1,10 +1,5 @@
 const store = require("../../models/store");
 
-const getStores = async (req, res) => {
-  const stores = await store.find({});
-  res.json(stores);
-};
-
 const persistStore = async (
   name,
   cuit,
@@ -25,7 +20,22 @@ const persistStore = async (
   return newStore;
 };
 
+const obtainStores = async (page, limit) => {
+  const totalStores = await store.countDocuments();
+  const docsToSkip = (page - 1) * limit;
+  const stores = await store.find().skip(docsToSkip).limit(limit);
+  const storesWithPagination = {
+    data: stores,
+    page,
+    pages: Math.ceil(totalStores / limit),
+    limit: limit,
+    total: totalStores,
+  };
+
+  return storesWithPagination;
+};
+
 module.exports = {
-  getStores,
   persistStore,
+  obtainStores,
 };
