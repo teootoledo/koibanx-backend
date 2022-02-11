@@ -8,6 +8,7 @@ env:
   DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
   DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
   DATABASE_DBNAME: ${{ secrets.DATABASE_DBNAME }}
+  DATABASE_URI: ${{ secrets.DATABASE_URI }}
 
 jobs:
   tests:
@@ -27,6 +28,7 @@ jobs:
           echo DATABASE_HOST=$DATABASE_HOST >> .env
           echo DATABASE_PORT=$DATABASE_PORT >> .env
           echo DATABASE_DBNAME=$DATABASE_DBNAME >> .env
+          echo DATABASE_URI=$DATABASE_URI >> .env
           cat .env
       - name: Install dependencies
         run: yarn install
