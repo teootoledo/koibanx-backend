@@ -7,10 +7,13 @@ const storeFormatter = (store) => {
   const storeString = JSON.stringify(store);
   let storeJson = JSON.parse(storeString);
 
+  storeJson.id = storeJson._id;
   storeJson.concepts = conceptFormatter(storeJson.concepts);
   storeJson.currentBalance = balanceFormatter(storeJson.currentBalance);
   storeJson.active = activeFormatter(storeJson.active);
   storeJson.lastSale = daleFormatter(storeJson.lastSale);
+  delete storeJson._id;
+  delete storeJson.__v;
 
   return storeJson;
 };
