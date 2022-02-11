@@ -10,8 +10,6 @@ let UserSchema = new mongoose.Schema(
 );
 
 UserSchema.methods.verifyPassword = function (password) {
-  console.log("VERIFY PASSWORD", password);
-  console.log("THIS PASSWORD", this.password);
   return bcrypt.compareSync(password, this.password);
 };
 

@@ -14,7 +14,6 @@ const basicAuth = async (req, res, next) => {
     if (!userFound) {
       throw new AuthError("invalid user or password");
     }
-    console.log(user.pass);
     if (userFound.verifyPassword(user.pass)) {
       next();
     } else {
