@@ -1,4 +1,5 @@
 const store = require("../../models/store");
+const { formatStores } = require("../../utils/formatter");
 
 const persistStore = async (
   name,
@@ -25,7 +26,7 @@ const obtainStores = async (page, limit) => {
   const docsToSkip = (page - 1) * limit;
   const stores = await store.find().skip(docsToSkip).limit(limit);
   const storesWithPagination = {
-    data: stores,
+    data: formatStores(stores),
     page,
     pages: Math.ceil(totalStores / limit),
     limit: limit,
