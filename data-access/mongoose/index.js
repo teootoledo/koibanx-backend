@@ -1,4 +1,5 @@
 const store = require("../../models/store");
+const user = require("../../models/user");
 const { formatStores } = require("../../utils/formatter");
 
 const persistStore = async (
@@ -41,7 +42,7 @@ const obtainStores = async (page, limit) => {
     const res = await store.paginate({}, options);
 
     return {
-      data: res.data,
+      data: formatStores(res.data),
       page: res.page,
       pages: res.pages,
       limit: res.limit,
@@ -52,7 +53,17 @@ const obtainStores = async (page, limit) => {
   }
 };
 
+const obtainUser = async (username) => {
+  try {
+    const userFound = await user.findOne({ username });
+    return userFound;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 module.exports = {
   persistStore,
   obtainStores,
+  obtainUser,
 };
