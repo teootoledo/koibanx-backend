@@ -5,6 +5,8 @@ const { server } = require("../app");
 const StoreSchema = require("../models/store");
 const { api, invalidStore, validStore } = require("./helper");
 
+jest.setTimeout(30000);
+
 beforeEach(async () => {
   await StoreSchema.deleteMany({});
 
