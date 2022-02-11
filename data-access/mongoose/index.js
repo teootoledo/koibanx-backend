@@ -27,18 +27,26 @@ const persistStore = async (
 
 const obtainStores = async (page, limit) => {
   try {
-    const totalStores = await store.countDocuments();
-    const docsToSkip = (page - 1) * limit;
-    const stores = await store.find().skip(docsToSkip).limit(limit);
-    const storesWithPagination = {
-      data: formatStores(stores),
+    const options = {
       page,
-      pages: Math.ceil(totalStores / limit),
-      limit: limit,
-      total: totalStores,
+      limit,
+      customLabels: {
+        docs: "data",
+        page: "page",
+        totalPages: "pages",
+        limit: "limit",
+        totalDocs: "total",
+      },
     };
+    const res = await store.paginate({}, options);
 
-    return storesWithPagination;
+    return {
+      data: res.data,
+      page: res.page,
+      pages: res.pages,
+      limit: res.limit,
+      total: res.total,
+    };
   } catch (error) {
     console.log(error);
   }
