@@ -1,17 +1,15 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 const { seed } = require("../utils/initializer");
-
 const { server } = require("../app");
 const StoreSchema = require("../models/store");
 const { api, invalidStore, validStore } = require("./helper");
 
-jest.setTimeout(30000);
-
 beforeEach(async () => {
   await StoreSchema.deleteMany({});
-
   await seed();
 });
+
+jest.setTimeout(90000);
 
 describe("BasicAuth", () => {
   test("without auth should throw a AuthError", async () => {
@@ -68,6 +66,6 @@ describe("Post a store", () => {
 });
 
 afterAll(() => {
-  moongose.connection.close();
+  mongoose.connection.close();
   server.close();
 });

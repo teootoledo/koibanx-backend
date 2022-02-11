@@ -1,6 +1,6 @@
-const { app } = require("../app");
+const { server } = require("../app");
 const supertest = require("supertest");
-const api = supertest(app);
+const api = supertest(server);
 
 const invalidStore = {
   name: "Esperanza Roman",

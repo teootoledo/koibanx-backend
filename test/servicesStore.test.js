@@ -1,10 +1,8 @@
-const DomainError = require("../utils/errors/DomainError");
 const ValidateCreateStoreError = require("../utils/errors/ValidateCreateStoreError");
 
 const { storeFormatter } = require("../utils/formatter");
 
 const {
-  validateCreateStore,
   validateName,
   validateCuit,
   validateConcepts,
