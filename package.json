@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node $NODE_DEBUG_OPTION app.js",
     "dev": "nodemon $NODE_DEBUG_OPTION app.js",
-    "test": "jest --silent --detectOpenHandles",
+    "test": "jest --silent",
     "test:watch": "npm run test -- --watch"
   },
   "author": "",
@@ -28,5 +28,9 @@
     "jest": "^27.5.1",
     "nodemon": "^2.0.15",
     "supertest": "^6.2.2"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testTimeout": "90000"
   }
 }

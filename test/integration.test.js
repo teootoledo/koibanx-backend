@@ -34,19 +34,19 @@ describe("BasicAuth", () => {
 });
 
 describe("Get all stores", () => {
-  test("should return 100 pages", async () => {
+  test("should return 10 pages", async () => {
     const res = await api
-      .get('/api/stores?q={"page": 5, "limit": 100}')
+      .get('/api/stores?q={"page": 5, "limit": 2}')
       .auth("test@koibanx.com", "test123")
       .expect(200);
     expect(res.body.pages).toBe(10);
   });
-  test("should return 1000 documents", async () => {
+  test("should return 20 documents", async () => {
     const res = await api
-      .get('/api/stores?q={"page": 5, "limit": 100}')
+      .get('/api/stores?q={"page": 5, "limit": 2}')
       .auth("test@koibanx.com", "test123")
       .expect(200);
-    expect(res.body.total).toBe(1000);
+    expect(res.body.total).toBe(20);
   });
 });
 

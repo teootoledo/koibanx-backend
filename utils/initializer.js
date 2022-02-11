@@ -16,7 +16,7 @@ const init = async function () {
 };
 
 const seed = async () => {
-  for (let i = 0; i < 1000; i++) {
+  for (let i = 0; i < 20; i++) {
     const store = {
       name: `Name${i}`,
       cuit: `11122233344`,
