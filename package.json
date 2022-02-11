@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "run": "node $NODE_DEBUG_OPTION app.js",
+    "start": "node $NODE_DEBUG_OPTION app.js",
     "dev": "nodemon $NODE_DEBUG_OPTION app.js",
     "test": "jest --silent ",
     "test:watch": "npm run test -- --watch"
