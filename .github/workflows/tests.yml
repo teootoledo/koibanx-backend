@@ -30,7 +30,5 @@ jobs:
           cat .env
       - name: Install dependencies
         run: yarn install
-        working-directory: ./components=
       - name: Run tests
         run: yarn test
-        working-directory: ./components
