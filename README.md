@@ -1,6 +1,6 @@
 ![Banner](./koibanx-banner.png)
 
-##### GitHub Actions - Tests workflow [![tests](https://github.com/teootoledo/koibanx-backend/actions/workflows/tests.yml/badge.svg)](https://github.com/teootoledo/koibanx-backend/actions/workflows/tests.yml)
+GitHub Actions [![tests](https://github.com/teootoledo/koibanx-backend/actions/workflows/tests.yml/badge.svg)](https://github.com/teootoledo/koibanx-backend/actions/workflows/tests.yml)
 
 ### Scripts 📄
 
