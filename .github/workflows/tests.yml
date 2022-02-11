@@ -1,0 +1,36 @@
+name: Tests
+on:
+  push:
+    branches:
+      - master
+
+env:
+  DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
+  DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
+  DATABASE_DBNAME: ${{ secrets.DATABASE_DBNAME }}
+
+jobs:
+  tests:
+    name: Tests
+    if: "!contains(github.event.head_commit.message, 'skip ci')"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Setup Node.js v16
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.0
+      - name: Create .env
+        run: |
+          touch .env
+          echo DATABASE_HOST=$DATABASE_HOST >> .env
+          echo DATABASE_PORT=$DATABASE_PORT >> .env
+          echo DATABASE_DBNAME=$DATABASE_DBNAME >> .env
+          cat .env
+      - name: Install dependencies
+        run: yarn install
+        working-directory: ./components=
+      - name: Run tests
+        run: yarn test
+        working-directory: ./components
