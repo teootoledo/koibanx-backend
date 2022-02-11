@@ -1,26 +1,12 @@
 const store = require("../../models/store");
 const user = require("../../models/user");
-const { formatStores } = require("../../utils/formatter");
+const { formatStores, storeFormatter } = require("../../utils/formatter");
 
-const persistStore = async (
-  name,
-  cuit,
-  concepts,
-  currentBalance,
-  active,
-  lastSale
-) => {
+const persistStore = async (data) => {
   try {
-    const newStore = store.create({
-      name,
-      cuit,
-      concepts,
-      currentBalance,
-      active,
-      lastSale,
-    });
+    const newStore = store.create({ _id: data.id, ...data });
 
-    return newStore;
+    return storeFormatter(newStore);
   } catch (error) {
     console.log(error);
   }

@@ -11,7 +11,7 @@ const storeFormatter = (store) => {
   storeJson.concepts = conceptFormatter(storeJson.concepts);
   storeJson.currentBalance = balanceFormatter(storeJson.currentBalance);
   storeJson.active = activeFormatter(storeJson.active);
-  storeJson.lastSale = daleFormatter(storeJson.lastSale);
+  storeJson.lastSale = saleFormatter(storeJson.lastSale);
   delete storeJson._id;
   delete storeJson.__v;
 
@@ -43,10 +43,11 @@ const activeFormatter = (value) => {
   return value;
 };
 
-const daleFormatter = (value) => {
+const saleFormatter = (value) => {
   return value.slice(0, 10).replace(new RegExp("-", "g"), "/");
 };
 
 module.exports = {
   formatStores,
+  storeFormatter,
 };

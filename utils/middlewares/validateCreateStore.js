@@ -98,4 +98,10 @@ const validateLastSale = (date) => {
 
 module.exports = {
   validateCreateStore,
+  validateName,
+  validateCuit,
+  validateConcepts,
+  validateCurrentBalance,
+  validateActive,
+  validateLastSale,
 };
