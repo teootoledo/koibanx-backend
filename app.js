@@ -26,7 +26,7 @@ app.use(notFound);
 app.use(handleErrors);
 
 // Start the server
-app.listen(config.get("port"));
+server = app.listen(config.get("port"));
 logger.info("API initialized on port " + config.get("port"));
 
-module.exports = { app };
+module.exports = { app, server };

@@ -1,5 +1,7 @@
 const moongose = require("mongoose");
 const { seed } = require("../utils/initializer");
+
+const { server } = require("../app");
 const StoreSchema = require("../models/store");
 const { api, invalidStore, validStore } = require("./helper");
 
@@ -65,4 +67,5 @@ describe("Post a store", () => {
 
 afterAll(() => {
   moongose.connection.close();
+  server.close();
 });
