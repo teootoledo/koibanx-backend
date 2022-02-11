@@ -13,7 +13,7 @@ const createStore = async (req, res) => {
 
 const getStores = async (req, res) => {
   try {
-    const { page, limit } = req.query;
+    const { page, limit } = JSON.parse(req.query.q);
 
     const stores = await obtainStores(parseInt(page), parseInt(limit));
     res.json(stores);
